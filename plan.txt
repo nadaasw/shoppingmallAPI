@@ -1,0 +1,26 @@
+만들어야 할 메소드
+
+상품
+ - GET /proudcts : 모든 상품들 조회하기
+ - POST /products: 상품 추가하기
+ - GET /products/{id} : id인 상품 조회하기
+ - PUT /products/{id} : id인 상품 수정하기
+ - DELETE /products/{id} : id인 상품 삭제하기
+
+카트
+ - GET /carts : 장바구니에 담긴 상품 조회하기
+ - POST /carts : 새로운 카트 만들기
+ - GET /carts/{id} : 장바구니 중 id인 상품 조회하기
+ - PUT /carts/{id} : id인 상품 업데이트하기
+ - DELETE /carts/{id} : id인 상품 장바구니에서 제거하기
+
+사용자
+ - GET /users : 모든 유저 조회하기
+ - POST /users : 유저 추가하기
+ - GET /users/{id} : id인 유저 조회하기
+ - PUT /users/{id} : id인 유저 업데이트하기
+ - DELETE /users/{id} : id인 유저 삭제하기
+
+로그인
+ - POST /auth/login : 로그인 하기
+ -
