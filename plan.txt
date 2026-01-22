@@ -13,6 +13,13 @@
  - GET /carts/{id} : 장바구니 중 id인 상품 조회하기
  - PUT /carts/{id} : id인 상품 업데이트하기
  - DELETE /carts/{id} : id인 상품 장바구니에서 제거하기
+ 상품 : id, title, description, price, ....
+
+ 카트 상품 : cart.id, product.id
+
+ 카트 : id , user_id, List<Product> list
+
+ 유저: id, username, email, password
 
 사용자
  - GET /users : 모든 유저 조회하기
@@ -23,4 +30,3 @@
 
 로그인
  - POST /auth/login : 로그인 하기
- -
