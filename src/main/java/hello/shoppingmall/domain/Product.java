@@ -1,6 +1,7 @@
 package hello.shoppingmall.domain;
 
 
+import hello.shoppingmall.dto.UpdateProductRequest;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -13,7 +14,6 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Setter
 @Table(name = "product")
 public class Product {
 
@@ -50,11 +50,11 @@ public class Product {
         this.image = image;
     }
 
-    public void update(String title, BigDecimal price, String description, String category, String image) {
-        this.title = title;
-        this.price = price;
-        this.description = description;
-        this.category = category;
-        this.image = image;
+    public void update(UpdateProductRequest request) {
+        this.title = request.getTitle();
+        this.price = request.getPrice();
+        this.description = request.getDescription();
+        this.category = request.getCategory();
+        this.image = request.getImage();
     }
 }

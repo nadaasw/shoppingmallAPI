@@ -1,16 +1,13 @@
 package hello.shoppingmall.domain;
 
+import hello.shoppingmall.dto.UserRequest;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name="user")
 @NoArgsConstructor
 @Getter
-@Setter
 public class User {
 
     @Id
@@ -27,4 +24,17 @@ public class User {
     @Column(name = "password", nullable = false, length = 500)
     private String password;
 
+
+    @Builder
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    public void update(UserRequest userRequest) {
+        this.username = userRequest.getUsername();
+        this.email = userRequest.getEmail();
+        this.password = userRequest.getPassword();
+    }
 }

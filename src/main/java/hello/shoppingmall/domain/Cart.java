@@ -1,10 +1,8 @@
 package hello.shoppingmall.domain;
 
+import hello.shoppingmall.dto.CartRequest;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +10,6 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Getter
-@Setter
 @Table(name = "cart")
 public class Cart {
 
@@ -29,7 +26,17 @@ public class Cart {
             joinColumns = @JoinColumn(name="cart_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
-    private List<Product> products = new ArrayList<>();
+    private List<Product> products;
 
 
+    @Builder
+    public Cart(Long userId, List<Product> products) {
+        this.userId = userId;
+        this.products = products;
+    }
+
+    public void update(CartRequest cartRequest) {
+        this.userId = cartRequest.getUserId();
+        this.products = cartRequest.getProducts();
+    }
 }

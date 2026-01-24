@@ -18,5 +18,13 @@ public class UpdateProductRequest {
     private String category;
     private String image;
 
-
+    public Product toEntity(){
+        return Product.builder()
+                .title(title)
+                .description(description)
+                .price(price)
+                .image(image)
+                .category(category)
+                .build();
+    }
 }

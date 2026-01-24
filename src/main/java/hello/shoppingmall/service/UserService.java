@@ -4,6 +4,7 @@ import hello.shoppingmall.domain.User;
 import hello.shoppingmall.dto.UserRequest;
 import hello.shoppingmall.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,10 +24,14 @@ public class UserService {
     }
 
     public User save(UserRequest request){
-        User user = new User();
-        user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
-        user.setUsername(request.getUsername());
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        User user = User.builder()
+                .username(request.getUsername())
+                .password(encoder.encode(request.getPassword()))
+                .email(request.getEmail())
+                .build();
+
         return userRepository.save(user);
     }
 
@@ -37,9 +42,9 @@ public class UserService {
 
     public User update(Long id, UserRequest request){
         User user = userRepository.findById(id).orElseThrow(()->new IllegalArgumentException("not found :" + id));
-        user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
-        user.setUsername(request.getUsername());
+
+        user.update(request);
+
         return user;
     }
 }

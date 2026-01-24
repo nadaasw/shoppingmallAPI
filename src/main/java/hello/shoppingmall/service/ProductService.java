@@ -36,8 +36,7 @@ public class ProductService {
     public Product update(Long id, UpdateProductRequest updateProductRequest) {
         Product product = productRepository.findById(id).orElseThrow(() ->new IllegalArgumentException("not found : " + id));
 
-        product.update(updateProductRequest.getTitle(), updateProductRequest.getPrice(), updateProductRequest.getDescription()
-        , updateProductRequest.getCategory(), updateProductRequest.getImage());
+        product.update(updateProductRequest);
 
         return product;
     }

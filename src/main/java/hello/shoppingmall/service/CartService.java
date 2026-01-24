@@ -16,9 +16,10 @@ public class CartService {
     private final CartRepository cartRepository;
 
     public Cart save(CartRequest cartRequest) {
-        Cart cart = new Cart();
-        cart.setUserId(cartRequest.getUserId());
-        cart.setProducts(cartRequest.getProducts());
+        Cart cart = Cart.builder()
+                .userId(cartRequest.getUserId())
+                .products(cartRequest.getProducts())
+                .build();
 
         return cartRepository.save(cart);
     }
@@ -40,8 +41,8 @@ public class CartService {
     @Transactional
     public Cart update(Long id, CartRequest cartRequest) {
         Cart cart = cartRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("not found  " + id ));
-        cart.setUserId(cartRequest.getUserId());
-        cart.setProducts(cartRequest.getProducts());
+
+        cart.update(cartRequest);
         return cart;
     }
 }
