@@ -1,5 +1,8 @@
 package hello.shoppingmall.dto;
 
+import lombok.Getter;
+
+@Getter
 public class LoginResponse {
     private String accessToken;
     private String refreshToken;

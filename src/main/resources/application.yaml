@@ -1,0 +1,21 @@
+spring:
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: nadaa
+    password: na
+
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+jwt:
+  issuer: nadaa@example.com
+  secret-key: nadaa
+

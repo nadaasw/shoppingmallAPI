@@ -15,7 +15,7 @@ public class ProductResponse {
     private final String image;
 
     public ProductResponse(Product product) {
-        this.id = product.getId();
+        this.id = product.getProductId();
         this.title = product.getTitle();
         this.price = product.getPrice();
         this.description = product.getDescription();
